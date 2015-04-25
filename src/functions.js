@@ -96,7 +96,6 @@ function parseGit (logArray) {
         //use slice function to get copy of mulitple elements, based on 
         //git log format
         //var hash = splitLogArray.slice(0, 1);
-        debugger;
         var hash = splitLogArray[0];
         var date = splitLogArray.slice(1, 7);
         date = new Date(date.join(' '));
