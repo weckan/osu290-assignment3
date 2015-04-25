@@ -10,7 +10,8 @@
 
 function returnObjectLiteral() {
   //your code here
-  return undefined; //Modify ONLY this line
+  return object = {type: "Goldfish", brand: "Pepperidge Farm", flavor: "Cheddar", count: 2000 }; //Modify ONLY this line
+  //return undefined;
   //end your code
 }
 
@@ -24,8 +25,7 @@ function returnObjectLiteral() {
 * In addition, the following methods should be
 * callable on a MessageLog object:
 * logMessage( {string} messageText, {number} direction) - This should log a
-* message
-* as either being sent or received. A direction of 0 indicates it is a message
+* message as either being sent or received. A direction of 0 indicates it is a message
 * the user sent. A direction of 1 indicates it is a message the user received.
 * Behavior for other numbers is undefined.
 * getSentMessage({number} n) - returns as a string, the content of the nth most
@@ -38,6 +38,41 @@ function returnObjectLiteral() {
 */
 
 //your code here
+//function MessageLog(user) {
+var MessageLog = function (user) {
+    this.user = user;
+    this.received = []; 
+    this.sent = [];
+    this.totReceived = 0;
+    this.totSent = 0;
+}
+MessageLog.prototype.logMessage = function (messageText, direction) {
+    if (direction == 0)
+    {
+        if (this.sent.length == 5)
+            this.sent.pop();
+        this.sent.unshift(messageText);
+        this.totSent++;
+    }
+    else if (direction == 1)
+    {
+        if (this.received.length == 5)
+            this.received.pop();
+        this.received.unshift(messageText);
+        this.totReceived++;
+    }
+}
+MessageLog.prototype.getSentMessage = function (number) {
+    return this.sent[number];
+}
+
+MessageLog.prototype.totalSent = function (){
+    return this.totSent;
+}
+MessageLog.prototype.totalReceived = function (){
+    return this.totReceived;
+}
+
 
 //end your code
 
@@ -47,7 +82,9 @@ function returnObjectLiteral() {
 * received.
 */
 //your code here
-
+MessageLog.prototype.lastReceivedMessage = function () {
+    return this.received[0].MessageText;
+}
 //end your code
 
 /**
@@ -57,5 +94,9 @@ function returnObjectLiteral() {
 */
 
 //your code here
+var myLog = new MessageLog('BlackHatGuy');
+myLog.logMessage('foo', 1);
+myLog.logMessage('bar', 1);
+myLog.logMessage('baz', 1);
 
 //end your code
