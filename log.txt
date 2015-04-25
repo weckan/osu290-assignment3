@@ -1,1 +1,4 @@
-You log goes in this  file.
+Start: Sun, 17 Apr 2015 12:30:00 -0700
+End: Sun, 17 Apr 2015 14:46:55 -0700 
+Tasks: Set up for assignment, coded first functions
+

@@ -13,6 +13,11 @@
 */
 
 //your code here
+function uselessFunction()
+{
+    var useless = null;
+    return useless;
+}
 
 //end your code
 
@@ -30,6 +35,19 @@ var barType = typeof bar;
 */
 
 //your code here
+bar = function (doubleArray)
+{
+    var iterate;
+    var success = true;
+    for (iterate = 0; iterate < doubleArray.length; iterate++)
+    {
+        if (typeof doubleArray[iterate] === 'number')
+            doubleArray[iterate] *=  2;
+        else
+            success = false;
+    }
+    return success;
+}
 
 //end your code
 
@@ -66,5 +84,29 @@ function GitLog(hash, date, message) {
 */
 
 //your code here
+
+function parseGit (logArray) {
+    var results = [];
+    for (iterate = 0; iterate < logArray.length; iterate++)
+    {
+        //use split with a space argument to split string into array of 
+        //space-separated values
+        debugger;
+        var splitLogArray = [];
+        splitLogArray = logArray[iterate].split(' ');
+        //use slice function to get copy of mulitple elements, based on 
+        //git log format
+        //var hash = splitLogArray.slice(0, 1);
+        var hash = splitLogArray[0];
+        var date = splitLogArray.slice(1, 7);
+        date = new Date(date.join());
+        var message = splitLogArray.slice(7);
+        message = message.join();
+        //make a gitLog object out of entry, push to results
+        results.push(new GitLog(hash, date, message));
+    }
+
+    return results;
+}
 
 //end your code
