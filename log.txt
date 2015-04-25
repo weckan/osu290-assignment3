@@ -1,4 +1,7 @@
-Start: Sun, 17 Apr 2015 12:30:00 -0500
-End: Sun, 17 Apr 2015 14:46:55 -0500 
-Tasks: Set up for assignment, coded first functions
+Start: Fri, 24 Apr 2015 12:30:00 -0500
+End: Fri, 24 Apr 2015 14:46:55 -0500 
+Tasks: Set up for assignment, coded first functions of functions.js
 
+Start: Sat, 25 Apr 2015 10:06:43
+End: Sat, 25 Apr 2015 13:29:55 -0500 
+Tasks: Completed functions.js, start/finish objects, start/finish variables.js
