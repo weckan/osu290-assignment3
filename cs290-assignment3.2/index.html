@@ -2,42 +2,40 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Local Storage and Ajax Demo</title>
-	<script src="demo.js"></script>
+	<title>Get Git Gists, Git.</title>
+	<script src="gists.js"></script>
 </head>
 <body>
-	<div id="output"></div>
+	<div id="Options"></div>
 	<section>
-		<h5>Create a New Sport</h5>
+		<h5>Options for Getting Gists</h5>
 		<div>
-			<label>Name</label>
-			<input type="text" name="sport-name">
+			<label>Number Pages (max 5)</label>
+            <select name="number-chooser">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">4</option>
+                <option value="4">5</option>
+            </select>
 		</div>
-		<div>
-			<label>Minimum Temp</label>
-			<input type="number" name="sport-min-temp">
-		</div>
-		<div>
-			<label>Maximum Temp</label>
-		 	<input type="number" name="sport-max-temp">
-	 	</div>
 	 	<div>
-			<label>Rain Acceptable</label>
-			<input type="checkbox" name="sport-rain-ok">
+			<label>Filter by Languages (optional): </label>
+			<input type="checkbox" name="sport-rain-ok" value =
+            "Python">Python 
+			<input type="checkbox" name="sport-rain-ok" value =
+            "JavaScript">JavaScript 
+			<input type="checkbox" name="sport-rain-ok" value = "C++">C++<br>
 		</div>
 		<div>
-			<input type="button" value="Save Sport" onclick="saveSport()">
+			<input type="button" value="Search Gists" onclick="getGistList()">
 		</div>
 	</section>
 	<section>
-		<h5>City Selection</h5>
-		<select name="city-select">
-			<option value="Salem,Or">Salem</option>
-			<option value="Corvallis,Or">Corvallis</option>
-		</select>
+		<h5>Results</h5>
 	</section>
 	<section>
-		<ul id="sport-list">
+		<ul id="normal-gists">
 		</ul>
 	</section>
 </body>
