@@ -11,19 +11,27 @@ function gistSearch(numPages, languages) {
 //section for gist search display
 
 function liGist (gist) {
+    //var div = document.createElement('div');
     var dl = document.createElement('dl');
     var entry = dlEntry('Description: ', JSON.stringify(gist.description));
     dl.appendChild(entry.dt);
     dl.appendChild(entry.dd);
-    var entry = dlEntry('Link: ', JSON.stringify(gist.url));
-    dl.appendChild(entry.dt);
-    dl.appendChild(entry.dd);
-    /*
-       var entry = dlEntry('Description: ', gist.description);
-       dl.appendCild(entry.dt);
-       dl.appendCild(entry.dd);
-       */ 
+    var entry = aEntry((gist.url));
+    dl.appendChild(entry);
+    //div.appendChild(dl);
+    var entry = favEntry();
+    dl.appendChild(entry);
+    //return div;
     return dl;
+}
+
+function favEntry() {
+    var button = document.createElement('input');
+    button.type = 'button';
+    button.name = 'favoriteAdd';
+    button.value = "Fav!";
+    button.onclick = "addFavorite()";
+    return button;
 }
 
 function dlEntry (term, definition) {
@@ -34,18 +42,30 @@ function dlEntry (term, definition) {
     return {'dt':dt, 'dd':dd};
 }
 
+function aEntry (definition) {
+    var link = document.createElement('a');
+    link.setAttribute('href', definition);
+    var linkText = document.createTextNode(definition);
+    link.appendChild(linkText);
+    return link;
+}
+
 function createGistList(ul, gistData){
     for (var i = ul.childNodes.length - 1; i >=0; i--) {
         ul.removeChild(ul.childNodes[i]);
     }
     var li = document.createElement('li');
-    //for (var i = 0; i < gistData.length(); i++) {
-    for (var i = 0; i < 30; i++) {
-        li.appendChild(liGist(gistData[0]));
+    for (var i = 0; i < gistData.length; i++) {
+    //for (var i = 0; i < 30; i++) {
+        li.appendChild(liGist(gistData[i]));
     }
     ul.appendChild(li);
 }
+
+
 //section for favorites
+
+function addFavorite();
 
 // AJAX call
 //
@@ -68,9 +88,9 @@ function getGistList() {
             //need a semicolon after this line?
             console.log(this.status);
             var gistData = JSON.parse(this.responseText)
-            console.log(JSON.parse(this.responseText));
-            console.log(JSON.parse(this.responseText));
-            console.log(JSON.stringify(gistData[0].description));
+            //console.log(JSON.parse(this.responseText));
+            //console.log(JSON.parse(this.responseText));
+            //console.log(JSON.stringify(gistData[0].description));
             createGistList(document.getElementById('normal-gists'), gistData); 
         }
     };
