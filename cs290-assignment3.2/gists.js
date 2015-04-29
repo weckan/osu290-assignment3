@@ -13,26 +13,35 @@ function gistSearch(numPages, languages) {
 function liGist (gist) {
     //var div = document.createElement('div');
     var dl = document.createElement('dl');
+    dl.setAttribute('gistID', JSON.stringify(gist.id));
     var entry = dlEntry('Description: ', JSON.stringify(gist.description));
+    dl.appendChild(entry.dt);
+    dl.appendChild(entry.dd);
+    var entry = dlEntry('Gist ID: ', JSON.stringify(gist.id));
     dl.appendChild(entry.dt);
     dl.appendChild(entry.dd);
     var entry = aEntry((gist.url));
     dl.appendChild(entry);
     //div.appendChild(dl);
-    var entry = favEntry();
+    var entry = favEntry(JSON.stringify(gist.id));
     dl.appendChild(entry);
     //return div;
     return dl;
 }
 
-function favEntry() {
+function favEntry(definition) {
     var button = document.createElement('input');
     button.type = 'button';
-    button.name = 'favoriteAdd';
     button.value = "Fav!";
-    button.onclick = "addFavorite()";
+    button.setAttribute("gistID", definition);
+    button.onclick = function() {
+        var gistID = this.getAttribute("gistID");
+        var newFavorite = findGistID(gistID);
+
+    }
     return button;
 }
+
 
 function dlEntry (term, definition) {
     var dt = document.createElement('dt');
@@ -65,7 +74,20 @@ function createGistList(ul, gistData){
 
 //section for favorites
 
-function addFavorite();
+function createFavoriteList (){
+    var ul = localStorage.getItem('favorites');
+//    for (var i = ul.childNodes.length - 1; i >=0; i--) {
+//        ul.removeChild(ul.childNodes[i]);
+//    }
+    var li = document.createElement('li');
+    for (var i = 0; i < gistData.length; i++) {
+    //for (var i = 0; i < 30; i++) {
+        li.appendChild(liGist(gistData[i]));
+    }
+    ul.appendChild(li);
+}
+//function addFavorite() {
+
 
 // AJAX call
 //
