@@ -1,0 +1,21 @@
+ul {
+    background: #00ff00;
+    border: 3px outset orange;
+    font-family: monospace;
+    /*float: left;*/
+}
+div#favorite {
+    float: right;
+    width: 45%;
+}
+
+div#normal {
+    float: left;
+    width: 45%;
+}
+
+body {
+    font: sans-serif;
+    background: #ff00ff;
+}
+
